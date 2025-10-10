@@ -91,7 +91,7 @@ const Hero = () => {
 
           <button
             onClick={() => setMenuOpen(false)}
-            className="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-indigo-600 hover:bg-indigo-700 transition text-white rounded-md flex"
+            className="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-green-600 hover:bg-green-700 transition text-white rounded-md flex"
           >
             X
           </button>
@@ -176,7 +176,7 @@ const Hero = () => {
           <div className="flex items-center gap-4 ">
             <Link
               to="/app"
-              className="bg-green-500 hover:bg-green-600 text-white rounded-full px-9 h-12 m-1 ring-offset-2 ring-1 ring-indigo-400 flex items-center transition-colors"
+              className="bg-green-500 hover:bg-green-600 text-white rounded-full px-9 h-12 m-1 ring-offset-2 ring-1 ring-green-400 flex items-center transition-colors"
             >
               Get started
               <svg
@@ -196,7 +196,7 @@ const Hero = () => {
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
             </Link>
-            <button className="flex items-center gap-2 border border-slate-400 hover:bg-indigo-50 transition rounded-full px-7 h-12 text-slate-700">
+            <button className="flex items-center gap-2 border border-slate-400 hover:bg-green-50 transition rounded-full px-7 h-12 text-slate-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
