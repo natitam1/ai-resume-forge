@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
 const Login = () => {
-  const [state, setState] = useState("signup");
+  const query = new URLSearchParams(window.location.search);
+  const urlState = query.get("state");
+
+  const [state, setState] = useState(urlState || "signup");
 
   const [formData, setFormData] = useState({
     name: "",
