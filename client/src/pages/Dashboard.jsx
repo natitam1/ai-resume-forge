@@ -173,6 +173,14 @@ const Dashboard = () => {
                   )}
                 </div>
               </label>
+              <input
+                type="file"
+                htmlFor="resume-input"
+                accept=".pdf"
+                hidden
+                value={resume}
+                onChange={(e) => setResume(e.target.files[0])}
+              />
             </div>
             <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
               Upload Resume
