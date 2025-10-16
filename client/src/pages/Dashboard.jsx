@@ -41,7 +41,10 @@ const Dashboard = () => {
       </p>
 
       <div className="flex gap-4">
-        <button className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
+        <button
+          onClick={() => setShowCreateResume(true)}
+          className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-indigo-500 hover:shadow-lg transition-all duration-300 cursor-pointer"
+        >
           <PlusIcon className="size-11 transition-all duration-300 p-2.5 bg-gradient-to-br from-indigo-300 to-indigo-500 text-white rounded-full" />
           <p className="text-sm group-hover:text-indigo-600 transition-all duration-300">
             Create Resume
@@ -62,7 +65,6 @@ const Dashboard = () => {
           const baseColor = colors[index % colors.length];
           return (
             <button
-              onClick={() => setShowCreateResume(true)}
               key={index}
               className="relative w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 border group hover:shadow-lg transition-all duration-300 cursor-pointer"
               style={{
