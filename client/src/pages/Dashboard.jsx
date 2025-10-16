@@ -33,6 +33,9 @@ const Dashboard = () => {
     setShowUploadResume(false);
     navigate("/app/builder/res123");
   };
+  const editTitle = async (event) => {
+    event.preventDefault();
+  };
   const loadAllResumes = async () => {
     setAllResumes(dummyResumeData);
   };
@@ -74,6 +77,7 @@ const Dashboard = () => {
           const baseColor = colors[index % colors.length];
           return (
             <button
+              onClick={() => navigate(`/app/builder/${resume._id}`)}
               key={index}
               className="relative w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 border group hover:shadow-lg transition-all duration-300 cursor-pointer"
               style={{
@@ -97,9 +101,18 @@ const Dashboard = () => {
               >
                 Updated on {new Date(resume.updatedAt).toLocaleDateString()}
               </p>
-              <div className="absolute top-1 right-1 group-hover:flex items-center hidden">
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="absolute top-1 right-1 group-hover:flex items-center hidden"
+              >
                 <TrashIcon className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors" />
-                <PencilIcon className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors" />
+                <PencilIcon
+                  onClick={() => {
+                    setEditResumeId(resume._id);
+                    setTitle(resume.title);
+                  }}
+                  className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors"
+                />
               </div>
             </button>
           );
@@ -190,6 +203,38 @@ const Dashboard = () => {
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-400 cursor-pointer transition-colors"
               onClick={() => {
                 setShowUploadResume(false);
+                setTitle("");
+              }}
+            />
+          </div>
+        </form>
+      )}
+      {editResumeId && (
+        <form
+          onSubmit={editTitle}
+          onClick={() => setEditResumeId("")}
+          className="fixed inset-0 bg-black/70 backdrop-blur-2xl bg-opacity-50 z-10 flex items-center justify-center"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-slate-50 border shadow-md rounded-lg w-full max-w-sm p-6"
+          >
+            <h2 className="text-xl font-bold mb-4">Edit resume title</h2>
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              placeholder="Enter resume title"
+              className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
+              required
+            />
+            <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+              Update
+            </button>
+            <XIcon
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-400 cursor-pointer transition-colors"
+              onClick={() => {
+                setEditResumeId("");
                 setTitle("");
               }}
             />
