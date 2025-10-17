@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { dummyResumeData } from "../assets/assets";
+import { useParams } from "react-router-dom";
+
+const { resumeId } = useParams();
 
 const ResumeBuilder = () => {
   const [resumeData, setResumeData] = useState({
@@ -17,7 +20,8 @@ const ResumeBuilder = () => {
   });
 
   const loadExistingResume = async () => {
-    setResumeData(dummyResumeData);
+    const resume = dummyResumeData.find((resume) => resume._id === resumeId);
+    setResumeData(resume);
   };
 
   useEffect(() => {
