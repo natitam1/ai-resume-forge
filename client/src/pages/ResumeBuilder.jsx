@@ -3,11 +3,11 @@ import { dummyResumeData } from "../assets/assets";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeftIcon } from "lucide-react";
 
-const { resumeId } = useParams();
-
 const ResumeBuilder = () => {
+  const { resumeId } = useParams();
   const [resumeData, setResumeData] = useState({
     _id: "",
+    userId: "",
     title: "",
     personal_info: {},
     professional_summary: "",
@@ -32,7 +32,10 @@ const ResumeBuilder = () => {
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <Link className="inline-flex gap-2 items-center transition-all text-slate-50 hover:text-slate-700">
+        <Link
+          to={"/app "}
+          className="inline-flex gap-2 items-center transition-all text-slate-500 hover:text-slate-700"
+        >
           <ArrowLeftIcon className="size-4" /> Back to Dashboard
         </Link>
       </div>
