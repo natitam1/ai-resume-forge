@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { dummyResumeData } from "../assets/assets";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeftIcon, User } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  Briefcase,
+  FileText,
+  FolderIcon,
+  GraduationCap,
+  Sparkles,
+  User,
+} from "lucide-react";
 
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
@@ -26,13 +34,42 @@ const ResumeBuilder = () => {
     document.title = resume.title;
   };
 
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [removeBackground, setRemoveBackground] = useState(false);
   const sections = [
     {
       id: "personal",
       name: "Personal Info",
       icon: User,
     },
+    {
+      id: "summary",
+      name: "Summary",
+      icon: FileText,
+    },
+    {
+      id: "experience",
+      name: "Experience",
+      icon: Briefcase,
+    },
+    {
+      id: "education",
+      name: "Education",
+      icon: GraduationCap,
+    },
+    {
+      id: "projects",
+      name: "Projects",
+      icon: FolderIcon,
+    },
+    {
+      id: "skills",
+      name: "Skills",
+      icon: Sparkles,
+    },
   ];
+
+  const activeSection = sections[activeSectionIndex];
 
   useEffect(() => {
     loadExistingResume();
@@ -50,7 +87,12 @@ const ResumeBuilder = () => {
       <div className="max-w-7xl mx-auto px-4 pb-8">
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Left Panel - Form */}
-          <div></div>
+          <div className="relative lg:col-span-5 rounded-lg overflow-hidden">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 pt-1">
+              {/* Progress bar using activeSectionIndex */}
+              <hr />
+            </div>
+          </div>
           {/* Right Panel - Form */}
           <div></div>
         </div>
